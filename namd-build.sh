@@ -21,7 +21,7 @@ mv tcl8.5.9-linux-arm64-threaded tcl-threaded
 wget https://sourceforge.net/projects/tcl/files/Tcl/8.5.9/tcl8.5.9-src.tar.gz
 tar -xzvf tcl8.5.9-src.tar.gz
 cd tcl8.5.9/unix
-./configure --prefix=~/NAMD_3.0b6_Source/tcl --enable-shared=no
+./configure --prefix=$HOME/NAMD_3.0b6_Source/tcl --enable-shared=no
 make -j16
 make install
 cd ../..
