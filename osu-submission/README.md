@@ -53,14 +53,23 @@ After visualising the data with a graph, we notice that the maximum bandwidth at
 
 These align with expectations as low message sizes fit entirely inside the ethernet connections's bandwidth which we cannot exceed, whereas higher message sizes will have constrained throughput and will thus incur higher latency.
 
-## Prelminary bandwidth results
+Note that the growth is linear but may look exponential due to the lograithmic scaling on the x-axis.
+
 ![](images/arbitrary-bandwidth.png)
 
 
-## Preliminary latency results
 ![](images/arbitrary-latency-log.png)
 
-Note that the growth is linear but may look exponential due to the lograithmic scaling on the x-axis.
+We see a similar pattern when comparing the bandwidth and latency metrics across different message sizes between all pairs of nodes. Most nodes enjoy gigabit bandwidth however there is one node, namely `cn01`, that appears to max out at 500Mbps.
+
+## Node to node bandwidth plot
+![](images/pt2pt-bandwidth.png)
+
+## Node to node latency plot
+![](images/pt2pt-latenct.png)
+
+## Maximum bandwidth heatmap
+![](images/bandwidth-heatmap.png)
 
 
 # Hardware analysis
