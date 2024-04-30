@@ -66,7 +66,7 @@ We see a similar pattern when comparing the bandwidth and latency metrics across
 ![](images/pt2pt-bandwidth.png)
 
 ## Node to node latency plot
-![](images/pt2pt-latenct.png)
+![](images/pt2pt-latency.png)
 
 ## Maximum bandwidth heatmap
 ![](images/bandwidth-heatmap.png)
