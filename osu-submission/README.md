@@ -85,7 +85,7 @@ We attempted to verify if these results lined up with the system's available har
        resources: irq:13 memory:80104000-80105fff memory:80106000-80107fff memory:80000000-800fffff
 ```
 
-## ``lspci` output
+## `lspci` output
 ```bash
 [sezeh@login ~]$ lspci -v
 00:00.0 Host bridge: Amazon.com, Inc. Device 0200
