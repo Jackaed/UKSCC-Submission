@@ -13,5 +13,9 @@ Referring to the stream documentation for MPI usage:
  One benchmark that uses an MPI version of STREAM is the HPC Challenge Benchmark, targetted at big supercomputing clusters. The web site is http://icl.cs.utk.edu/hpcc.
 
 Command used to compile:
-    mpicc stream_mpi.c
+    `mpicc stream_mpi.c`
+
+SLURM bash script:
+![Screenshot 2024-05-04 at 22 14 06](https://github.com/Jackaed/UKSCC-Submission/assets/8216039/17e754f3-3647-4fbb-b425-3e7713282a0e)
+
 
