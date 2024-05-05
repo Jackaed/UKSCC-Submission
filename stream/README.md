@@ -13,6 +13,7 @@ The benchmark measures the performance of four vector operations:
 *Optimisation*
 
 One way to improve STREAM results is to modify the OFFSET variable within the source code of the program.
+
 In order to compile stream for singe node performance, the following code was used:
 
     gcc -fopenmp -D_OPENMP stream.c -o stream 
