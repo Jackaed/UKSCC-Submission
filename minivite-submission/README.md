@@ -154,6 +154,23 @@ vertices in the same community which now become adjacent in contiguouse segments
 in the array. This is in contrast to random access lookups with a map which is
 bad for pre-fetching and branch prediction.
 
+The implementation for this scan looks as follows. As we iterate through the
+array, we check if the community has changed. If it has, we call the update
+function to deal with this accordingly before continuing onto the next community.
+
+```cpp
+for (int i = 1; i < clmap.size(); ++i) {
+  auto [scanningComm, scanningWeight] = clmap[i];
+  if (scanningComm != tcomm) {
+    update();
+    tcomm = scanningComm;
+    tweight = scanningWeight;
+  } else {
+    tweight += scanningWeight;
+  }
+}
+```
+
 You can find this commit
 [here](https://github.com/ECP-ExaGraph/miniVite/commit/a92f5beb63f418337c936d5b787d640ca8444a94)
 
