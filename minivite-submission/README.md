@@ -148,9 +148,9 @@ algorithm works by locally optimsing the modularitry metric by observing the
 change in modularity when a vertex joins a neighbouring community. This
 optimisation first sorts the vertices in the graph by their community and deals
 with the change in modularity for each community by linearly scanning across
-vertices in the same community which now become adjacent in contiguouse segments in the array. This is
-in contrast to random access lookups with a map which is bad for pre-fetching and
-branch prediction.
+vertices in the same community which now become adjacent in contiguouse segments
+in the array. This is in contrast to random access lookups with a map which is
+bad for pre-fetching and branch prediction.
 
 You can find this commit
 [here](https://github.com/ECP-ExaGraph/miniVite/commit/a92f5beb63f418337c936d5b787d640ca8444a94)
