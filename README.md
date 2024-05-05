@@ -4,11 +4,11 @@
 
 ### Build
 
-The build script for NAMD can be found in [namd-build.sh](./namd-build.sh).
+The build script for NAMD can be found in [namd-build.sh](./namd/build.sh).
 
 ### Run
 
-The slurm script used for NAMD can be found in [namd-run.sh](./namd-run.sh), and
+The slurm script used for NAMD can be found in [namd-run.sh](./namd/run.sh), and
 is ran with the following command:
 
 ```sh
@@ -27,7 +27,7 @@ NAMD performance scaled very strongly as you increased the number of nodes, with
 performance increasing linearly with the number of nodes. This can be seen on
 this graph:
 
-![image](./scaling.png)
+![image](./namd/scaling.png)
 
 ### What is NAMD
 
