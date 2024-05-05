@@ -3,7 +3,9 @@ Sam Ezeh, Freddie
 
 miniVite is an optimised version of vite for research. Vite is described as being an MPI+OpenMP implementation of the Louvain method for graph clustering. miniVite implements the same method but only implements a single phase of the Louvain method. Additionally, no heuristics are implemented for performance.
 
-![Louvain-algorithm-The-Louvain-algorithm-starts-from-a-singleton-partition-in-which-each](https://github.com/Jackaed/UKSCC-Submission/assets/8216039/26a77237-1692-43ac-8875-674c691773f8 | width=100)
+
+<img src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/26a77237-1692-43ac-8875-674c691773f8" width="200" >
+
 Louvain method
 
 Typical graphs often have nodes naturally segmented into “communities”, the Louvain method is a way of manipulating these graphs so nodes are clustered within their community. “Modularity” is the metric often used to partition the nodes however modularity optimization is an NP-complete problem. (Distributed Louvain Algorithm for Graph Community Detection, 2018). The Louvain method is used for an iterative heuristic for modularity optimisation.
