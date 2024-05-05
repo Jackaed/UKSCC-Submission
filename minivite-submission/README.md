@@ -7,12 +7,16 @@ miniVite is a variant of Vite that only implements the first stage of the Louvai
 
 miniVite outputs the following values:
 **Average total time (seconds)**
+
 The time taken across each node	
 **Modularity**
+
 Modularity is a metric that is used to partition the nodes.
 **Iterations**
+
 Iterations is the number of iterations required to optimise each node.
 **MODS**
+
 Modularity * Average total time 
 
 <img src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/26a77237-1692-43ac-8875-674c691773f8" width="200" >
