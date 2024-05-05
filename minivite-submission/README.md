@@ -14,7 +14,7 @@ miniVite outputs the following values:
 - The time taken across each node
 - Modularity (a metric that is used to partition the nodes)
 - Iterations (the number of iterations required to optimise each node.)
-- MODS (Modularity * Average total time)
+- MODS ($\\text{Modularity} \\times \\text{Average total time}$)
 
 ![image](./minivite-algorithm-explanation.png)
 
@@ -24,8 +24,8 @@ The Louvain algorithm works by optimising modularity on each node locally and
 then grouping it into a single node repetitively. These two phases are known as
 “Modularity Optimization” and “Community Aggregation”. miniVite only performs
 the first phase of the algorithm which consists of assigning each node in its
-community. The Louvain algorithm runs in O(n\*log(n)). (miniVite: Algorithms -
-ECP Proxy Applications, 2024)
+community. The Louvain algorithm runs in $O(n \\log(n))$. (miniVite: Algorithms
+\- ECP Proxy Applications, 2024)
 
 **Did any of your changes impact the MODS score? What does this tell you?** Yes,
 our optimisations decrease the time spent however the modularity stays the same.
