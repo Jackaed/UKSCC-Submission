@@ -57,7 +57,7 @@ to increase the problem size to as large as memory constraints allowed and
 modified the values `P` and `Q` to reflect the the setup with 4 nodes, each with 16 cores
 for a total of 64 processors.
 
-```hs
+```py
 HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
 HPL.out      output file name (if any) 
