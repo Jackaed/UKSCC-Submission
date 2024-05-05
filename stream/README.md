@@ -1,5 +1,18 @@
 STREAM
 -
+*What is STREAM?*
+
+Stream is a benchmark that measures memory bandwidth and computation rate. This is useful as CPUs become faster and can become bottlenecked by a low memory bandwidth.
+The benchmark measures the performance of four vector operations:
+
+Copy (a(i) = b(i))
+Scale (a(i) = q*b(i))
+Sum (a(i) = b(i) + c(i))
+Triad (a(i) = b(i) + q*c(i))
+
+*Optimisation*
+
+One way to improve STREAM results is to modify the OFFSET variable within the source code of the program.
 In order to compile stream for singe node performance, the following code was used:
 
     gcc -fopenmp -D_OPENMP stream.c -o stream 
