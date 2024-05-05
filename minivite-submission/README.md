@@ -1,14 +1,24 @@
 # MiniVite
 Sam Ezeh, Freddie
 
-miniVite is an optimised version of vite for research. Vite is described as being an MPI+OpenMP implementation of the Louvain method for graph clustering. miniVite implements the same method but only implements a single phase of the Louvain method. Additionally, no heuristics are implemented for performance.
+**What is miniVite?**
+miniVite is a variant of Vite that only implements the first stage of the Louvain algorithm. The Louvain algorithm attempts to calculate the modularity of a cluster. Calculating graph modularity is NP-hard and as such, we approximate it using the greedy Louvain algorithm.
 
+miniVite outputs the following values:
+**Average total time (seconds)**
+The time taken across each node	
+**Modularity**
+Modularity is a metric that is used to partition the nodes.
+**Iterations**
+Iterations is the number of iterations required to optimise each node.
+**MODS**
+Modularity * Average total time 
 
 <img src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/26a77237-1692-43ac-8875-674c691773f8" width="200" >
 
-Louvain method
+**Louvain Algorithm**
+The Louvain algorithm works by optimising modularity on each node locally and then grouping it into a single node repetitively. These two phases are known as “Modularity Optimization” and “Community Aggregation”. miniVite only performs the first phase of the algorithm which consists of assigning each node in its community. The Louvain algorithm runs in O(n*log(n)). (miniVite: Algorithms - ECP Proxy Applications, 2024)
 
-Typical graphs often have nodes naturally segmented into “communities”, the Louvain method is a way of manipulating these graphs so nodes are clustered within their community. “Modularity” is the metric often used to partition the nodes however modularity optimization is an NP-complete problem. (Distributed Louvain Algorithm for Graph Community Detection, 2018). The Louvain method is used for an iterative heuristic for modularity optimisation.
 
 * Explain optimisations
 * Build process writeup
