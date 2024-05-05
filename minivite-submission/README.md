@@ -84,7 +84,7 @@ for (std::vector<std::unordered_set<GraphElem>>::const_iterator iter = parray.be
 }
 ```
 
-I decided to begin by parallelising the loop by writing the following code.
+I decided to begin by parallelising the second for loop by writing the following code.
 
 ```cpp
 #pragma omp parallel for
@@ -102,6 +102,8 @@ for (size_t i = 0; i < parray.size(); ++i) {
 I split the loop into two as I was worried about race-conditions. I wanted the
 ssz reduction to be safe from race conditions but the `ssizes` initialisation is
 naturally free from race conditions.
+
+We could have replaced as the fist for loop to take advantage of TBB's [`concurrent_vector`](https://oneapi-src.github.io/oneTBB/main/tbb_userguide/concurrent_vector_ug.html) but we did not end up doing this.
 
 ### Data structure optimisation
 
