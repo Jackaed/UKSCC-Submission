@@ -58,11 +58,11 @@ this is clearly not the case, as can be seen in the
 We can also verify that NAMD is not memory bound, by performing runs with
 varying numbers of cores (see the [scaling graph](#scaling-across-cores)). Were
 the application to be memory bound, we would expect that the performance would
-remain similar, as we would still have the same total memory capacity and still
-be saturating the total memory bandwidth. However, in halving the cores, we
-observed that our performance also halved. This means that we cannot be memory
-bound. Therefore, NAMD is compute-bound, at least on our cluster, with this
-dataset.
+remain similar, regardless of core count, as we would still have the same total
+memory capacity and still be saturating the total memory bandwidth. However, we
+can see that performance scales linearly with the number of cores. This means
+that we must not be memory bound. Therefore, NAMD must be compute-bound, at
+least on our cluster, with this dataset.
 
 ### NAMD Performance
 
