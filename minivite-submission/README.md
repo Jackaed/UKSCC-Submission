@@ -37,9 +37,9 @@ The Louvain algorithm works by optimising modularity on each node locally and th
 
 # Results
 
-| File name               | Variant   | Average total time (seconds) | Modularity | Iterations | MODS    |
-| ----------------------- | --------- | ---------------------------- | ---------- | ---------- | ------- |
-| **soc-Pokec.bin**       | Baseline  | 25.6391                      | 0.642421   | 87         | 16.4711 |
-|                         | Optimised | 13.6502                      | 0.642421   | 87         | 8.76918 |
-| **com-LiveJournal.bin** | Baseline  | 5.82639                      | 0.65447    | 67         | 3.8132  |
-|                         | Optimised | 3.12556                      | 0.65447    | 67         | 2.04559 |
+| File name       | Variant   | Total time | Modularity | Iterations | MODS    |
+| --------------- | --------- | ---------- | ---------- | ---------- | ------- |
+| **Live Journal**       | Baseline  | 25.6391    | 0.642421   | 87         | 16.4711 |
+|                 | **Optimised** | **13.6502s**    | 0.642421   | 87         | 8.76918 |
+| **Pokec** | Baseline  | 5.82639    | 0.65447    | 67         | 3.8132  |
+|                 | **Optimised** | **3.12556s**    | 0.65447    | 67         | 2.04559 |
