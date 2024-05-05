@@ -35,6 +35,18 @@ Yes, our optimisations decrease the time spent however the modularity stays the 
 **What the two input files are, and whether this is compute, memory, or communication bound.**
 The two input files are graphs in a special .bin format specifically for Vite. miniVite is memory bound due to the usage of the distributed memory Louvain method implementation.
 
+**How are the two input graphs different?**
+
+File Size
+
+soc-Pokec
+1.14GB
+com-LiveJournal
+~0.50GB
+
+
+This indicates that soc-Pokec is a larger graph than com-LiveJournal. Both are a representation of social networks. com-LiveJournal is made up of groups that users can join. soc-Pokec is made up of the friendship user links.
+
 
 * Explain optimisations
 * Build process writeup
