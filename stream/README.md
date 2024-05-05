@@ -5,10 +5,10 @@ STREAM
 Stream is a benchmark that measures memory bandwidth and computation rate. This is useful as CPUs become faster and can become bottlenecked by a low memory bandwidth.
 The benchmark measures the performance of four vector operations:
 
-Copy (a(i) = b(i))
-Scale (a(i) = q*b(i))
-Sum (a(i) = b(i) + c(i))
-Triad (a(i) = b(i) + q*c(i))
+- Copy (a(i) = b(i))
+- Scale (a(i) = q*b(i))
+- Sum (a(i) = b(i) + c(i))
+- Triad (a(i) = b(i) + q*c(i))
 
 *Optimisation*
 
