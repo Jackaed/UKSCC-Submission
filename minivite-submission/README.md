@@ -48,6 +48,7 @@ com-LiveJournal
 This indicates that soc-Pokec is a larger graph than com-LiveJournal. Both are a representation of social networks. com-LiveJournal is made up of groups that users can join. soc-Pokec is made up of the friendship user links.
 
 **Provide a strong-scaling graph for 1-4 node?**
+
 <img width="361" alt="image222" src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/f3f8c859-5193-40a5-96cb-314689657415">
 
 
