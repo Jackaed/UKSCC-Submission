@@ -113,7 +113,7 @@ we found a branch with commits containing optimisations. While the branch did
 not compile without modification, we were able to integrate these optimisations
 into our local miniVite build.
 
-[Committs](https://github.com/ECP-ExaGraph/miniVite/compare/cafc77078107df3f60b59efad5a58438b245277a...0cf9337dd1a6409df9c754ebbe34132f24dac9d5)
+[Commits](https://github.com/ECP-ExaGraph/miniVite/compare/cafc77078107df3f60b59efad5a58438b245277a...0cf9337dd1a6409df9c754ebbe34132f24dac9d5)
 
 The first optimisation that this branch includes is an fixed-size on-stack
 hashmap for small graph segments, this contrasts with the dynamically allocated
@@ -151,9 +151,12 @@ algorithm works by locally optimsing the modularitry metric by observing the
 change in modularity when a vertex joins a neighbouring community. This
 optimisation first sorts the vertices in the graph by their community and deals
 with the change in modularity for each community by linearly scanning across
-vertices in the same community which now become adjacent in the graph. This
-contrasted to random access lookups with a map which is bad for pre-fetching and
+vertices in the same community which now become adjacent in contiguouse segments in the array. This is
+in contrast to random access lookups with a map which is bad for pre-fetching and
 branch prediction.
+
+You can find this commit
+[here](https://github.com/ECP-ExaGraph/miniVite/commit/a92f5beb63f418337c936d5b787d640ca8444a94)
 
 You can find the commit that enables these two optimisations and makes them
 active in the codebase
