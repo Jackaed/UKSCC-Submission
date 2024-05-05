@@ -6,7 +6,8 @@ We achieved a HPL run that achieved 1448.6 Gigaflops.
 
 # Installation
 To compile HPL we used the following script that uses the armclang compiler and
-the Arm Performance Library BLAS implementation.
+the Arm Performance Library which provides a BLAS implementation that is optimised
+for ARM hardware.
 
 ```bash
 module load libraries/openmpi/5.0.3
