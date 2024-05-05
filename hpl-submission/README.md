@@ -11,7 +11,6 @@ for ARM hardware.
 
 ```bash
 module load libraries/openmpi/5.0.3
-# module load libraries/openblas/0.3.27
 module use /home/sezeh/hpl/arm-pl/install/modulefiles
 module load compilers/armclang/24.04
 module load armpl
