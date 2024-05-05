@@ -2,6 +2,7 @@
 Sam Ezeh, Freddie
 
 **What is miniVite?**
+
 miniVite is a variant of Vite that only implements the first stage of the Louvain algorithm. The Louvain algorithm attempts to calculate the modularity of a cluster. Calculating graph modularity is NP-hard and as such, we approximate it using the greedy Louvain algorithm.
 
 miniVite outputs the following values:
@@ -17,6 +18,7 @@ Modularity * Average total time
 <img src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/26a77237-1692-43ac-8875-674c691773f8" width="200" >
 
 **Louvain Algorithm**
+
 The Louvain algorithm works by optimising modularity on each node locally and then grouping it into a single node repetitively. These two phases are known as “Modularity Optimization” and “Community Aggregation”. miniVite only performs the first phase of the algorithm which consists of assigning each node in its community. The Louvain algorithm runs in O(n*log(n)). (miniVite: Algorithms - ECP Proxy Applications, 2024)
 
 
