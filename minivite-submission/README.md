@@ -29,6 +29,12 @@ Modularity * Average total time
 
 The Louvain algorithm works by optimising modularity on each node locally and then grouping it into a single node repetitively. These two phases are known as “Modularity Optimization” and “Community Aggregation”. miniVite only performs the first phase of the algorithm which consists of assigning each node in its community. The Louvain algorithm runs in O(n*log(n)). (miniVite: Algorithms - ECP Proxy Applications, 2024)
 
+**Did any of your changes impact the MODS score? What does this tell you?**
+Yes, our optimisations decrease the time spent however the modularity stays the same. As MODS is Modularity * Average total time, the MODS value decreases from 16.4711 to 8.76918 for soc-Pokec.
+
+**What the two input files are, and whether this is compute, memory, or communication bound.**
+The two input files are graphs in a special .bin format specifically for Vite. miniVite is memory bound due to the usage of the distributed memory Louvain method implementation.
+
 
 * Explain optimisations
 * Build process writeup
