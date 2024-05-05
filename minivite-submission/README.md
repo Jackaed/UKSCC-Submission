@@ -52,12 +52,111 @@ This indicates that soc-Pokec is a larger graph than com-LiveJournal. Both are a
 <img width="361" alt="image222" src="https://github.com/Jackaed/UKSCC-Submission/assets/8216039/f3f8c859-5193-40a5-96cb-314689657415">
 
 
-* Explain optimisations
-* Build process writeup
-* Describe minivite
-* Answer questions from UKSCC assignment
+# Optimisations
 
-# Results
+## Compiler and BLAS library
+
+We began by compiling miniVite with Armclang and we used the Arm Performance Library
+implementation of BLAS as Armclang is able to emit instructions that are optimised
+for Arm hardware and the Arm Performance Library implements BLAS subroutines in a way
+that is also optimised for Arm hardware, we use this as our baseline configuration.
+
+## Source code optimisations
+
+Inside the source code, we noticed several `FIXME TODO` comments. Two of interest were
+the following from the `dspl.h` file.
+
+### 1. Concurrent vector
+```
+// FIXME TODO can we use TBB::concurrent_vector instead,
+// to make this parallel; first we have to get rid of maps
+for (std::map<GraphElem,Comm>::const_iterator iter = remoteCupdate.begin(); iter != remoteCupdate.end(); iter++) {
+    const GraphElem i = iter->first;
+    const Comm &curr = iter->second;
+
+    const int tproc = dg.get_owner(i);
+...
+```
+
+### 2. Loop parallelisation
+```
+// TODO FIXME parallelize this loop
+for (std::vector<std::unordered_set<GraphElem>>::const_iterator iter = parray.begin(); iter != parray.end(); iter++) {
+  ssz += iter->size();
+  ssizes[pproc] = iter->size();
+  pproc++;
+}
+```
+
+I decided to begin by parallelising the loop by writing the following code.
+```cpp
+#pragma omp parallel for
+for (size_t idx = 0; idx < parray.size(); ++idx) {
+  ssizes[idx] = parray[idx].size();                 
+}
+
+
+#pragma omp parallel for reduction(+:ssz)
+for (size_t i = 0; i < parray.size(); ++i) {
+  ssz += parray[i].size();
+}
+```
+
+I split the loop into two as I was worried about race-conditions.
+I wanted the ssz reduction to be safe from race conditions but the
+`ssizes` initialisation is naturally free from race conditions.
+
+### Data structure optimisation
+
+While researching the code of the miniVite algorithm and the Louvian algorithm,
+we found a branch with commits containing optimisations. While the branch did not compile
+without modification, we were able to integrate these optimisations into our
+local miniVite build.
+
+Commits: https://github.com/ECP-ExaGraph/miniVite/compare/cafc77078107df3f60b59efad5a58438b245277a...0cf9337dd1a6409df9c754ebbe34132f24dac9d5
+
+The first optimisation that this branch includes is an fixed-size on-stack hashmap for small graph segments, this contrasts with the dynamically allocated variant that the library uses by default.
+
+The implementation of the hashmap looks like this
+
+```cpp
+// An on-stack implementation to replace hashmap
+// implement the partial interface of std::unordered_map
+template <typename K, typename V, int N, int R = 1> struct fakemap {
+  static constexpr int radix = R;
+  std::array<std::array<std::pair<K, V>, N>, R> storage;
+  std::array<int, R> length = {};
+  std::pair<K, V> *find(const K &k) {
+    int b = k % R;
+    for (int i = 0; i < length[b]; ++i)
+      if (storage[b][i].first == k)
+        return &storage[b][i];
+    return nullptr;
+  }
+  void emplace(const K &k, const V &v) {
+    // caller must ensure that it does not overflow
+    int b = k % R;
+    storage[b][length[b]++] = {k, v};
+  }
+};
+```
+
+You can find the commit here: https://github.com/ECP-ExaGraph/miniVite/commit/89dd1ed8dff02a5d3a993e6b7f791b6f3cb2f17f
+
+The next optimisation that this branch features is based on sorting. The Louvain algorithm works by locally optimsing the modularitry metric by observing the change in modularity when a vertex joins a neighbouring community. This optimisation first sorts the vertices in the graph by their community and deals with the change in modularity for each community by linearly scanning across vertices in the same community which now become adjacent in the graph. This contrasted to random access lookups with a map which is bad for pre-fetching and branch prediction.
+
+You can find the commit that enables these two optimisations and makes them active in the codebase here: https://github.com/ECP-ExaGraph/miniVite/commit/0cf9337dd1a6409df9c754ebbe34132f24dac9d5
+
+# Other reasearch
+
+In addition to the above research, we found about an optimisation for miniVite that uses Persistent Memory and was tested on Lustre filesystem. While this doesn't apply for us, this gave us further insight into how the Louvain algorithm can be optimised for HPC clusters.
+
+You can find the poster for this project here: https://sc20.supercomputing.org/proceedings/tech_poster/poster_files/rpost137s2-file2.pdf
+You can find the paper for this project here: https://sc20.supercomputing.org/proceedings/tech_poster/poster_files/rpost137s2-file3.pdf
+You can find the poster abstract for this project here: https://sc20.supercomputing.org/proceedings/tech_poster/tech_poster_pages/rpost137.html
+
+
+# Best results
 
 | File name       | Variant   | Total time | Modularity | Iterations | MODS    |
 | --------------- | --------- | ---------- | ---------- | ---------- | ------- |
@@ -65,3 +164,13 @@ This indicates that soc-Pokec is a larger graph than com-LiveJournal. Both are a
 |                 | **Optimised** | **13.6502s**    | 0.642421   | 87         | 8.76918 |
 | **Pokec** | Baseline  | 5.82639    | 0.65447    | 67         | 3.8132  |
 |                 | **Optimised** | **3.12556s**    | 0.65447    | 67         | 2.04559 |
+
+* Explain optimisations
+* Build process writeup
+
+The implementation of the hashmap looks like this
+```
+```
+* Describe minivite
+
+
