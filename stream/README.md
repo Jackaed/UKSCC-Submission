@@ -71,6 +71,7 @@ Single Node Performance
 MPI Performance
 -
 We test the script across multiple nodes to find the best memory transfer rate has increased by almost 3*.
+
 SLURM bash script:
 ![Screenshot 2024-05-04 at 22 14 06](https://github.com/Jackaed/UKSCC-Submission/assets/8216039/17e754f3-3647-4fbb-b425-3e7713282a0e)
 
